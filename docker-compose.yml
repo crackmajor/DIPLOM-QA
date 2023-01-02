@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+  gate-simulator:
+    build: ./
+    image: node-app:1.0
+    container_name: node-gate-simulator
+    ports:
+      - '9999:9999'
+  mysql:
+    image: mysql:8.0.18
+    container_name: mysql-qa-diplom
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=app
+      - MYSQL_USER=app
+      - MYSQL_PASSWORD=pass
+  postgres:
+    image: postgres:12.0-alpine
+    container_name: postgres-qa-diplom
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./gdata:/var/lib/postgresql/pgdata
+    environment:
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_USER=app
+      - POSTGRES_DB=app
