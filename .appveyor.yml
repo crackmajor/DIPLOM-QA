@@ -9,7 +9,7 @@ branches:
 build: off
 
 install:
-  - java -jar ./artifacts/.\artifacts\aqa-shop.jar &
+  - java -jar ./artifacts/aqa-shop.jar &
   - chmod +x gradlew
 
 build_script:
