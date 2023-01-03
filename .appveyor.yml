@@ -9,7 +9,7 @@ branches:
 build: off
 
 environment:
-  nodejs_version: "6"
+  nodejs_version: "12"
 
 install:
   - java -jar ./artifacts/aqa-shop.jar &
