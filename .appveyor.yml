@@ -15,7 +15,7 @@ install:
   - java -jar ./artifacts/aqa-shop.jar &
   - chmod +x gradlew
   - npm install
-  - npm start
+  - npm start ./artifacts/gate-simulator/
 
 build_script:
   - ./gradlew test -Dselenide.headless=true --info
