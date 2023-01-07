@@ -13,6 +13,7 @@ public class DataGenerator {
     private static final Map<String, String> cardsNumbers = new HashMap<String, String>() {{
         put("APPROVED", "4444 4444 4444 4441");
         put("DECLINED", "4444 4444 4444 4442");
+        put("RANDOM", generateRandomCard());
     }};
 
     public static String getCardNumbers(String status) {
@@ -35,11 +36,6 @@ public class DataGenerator {
         return owner;
     }
 
-    public static class User {
-        private User() {
-        }
-    }
-
     @Value
     public static class UserInfo {
         private String cardNumber;
@@ -48,8 +44,8 @@ public class DataGenerator {
         private String owner;
         private String cvc;
 
-    public static UserInfo getValidUserInfo(String status) {
-            String date = generateDate(360);
+        public static UserInfo getUserInfo(String status, int shift) {
+            String date = generateDate(shift);
             return new UserInfo(getCardNumbers(status),
                     date.substring(0, 2),
                     date.substring(5, 7),
@@ -57,4 +53,14 @@ public class DataGenerator {
                     "666");
         }
     }
+
+    public static UserInfo getInvalidUserInfo(String status) {
+        String date = generateDate(360);
+        return new UserInfo(getCardNumbers(status),
+                date.substring(0, 2),
+                date.substring(5, 7),
+                generateOwner(),
+                "666");
+    }
 }
+
