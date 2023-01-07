@@ -19,6 +19,7 @@ install:
   - java -jar ./artifacts/aqa-shop.jar &
 
 test_script:
+  - sleep 10
   - sudo chmod +x gradlew
   - ps: ./gradlew test --info “-Dselenide.headless=true”
 
