@@ -1,6 +1,5 @@
 package ru.netology.page;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
 import ru.netology.data.DataGenerator;
@@ -9,9 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 
 public class BuyPage {
     private static Map<String, SelenideElement> elementPage = new HashMap<String, SelenideElement>() {{
@@ -21,6 +18,8 @@ public class BuyPage {
         put("ownerField", $("div.form-field:nth-child(3) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1) > span:nth-child(2) > input:nth-child(1)"));
         put("cvcField", $("[placeholder='999']"));
         put("resumeButton", $(byText("Продолжить")));
+        put("successfully", $("[class='notification notification_visible notification_status_ok notification_has-closer notification_stick-to_right notification_theme_alfa-on-white']"));
+        put("error", $("[class='notification notification_status_error notification_has-closer notification_stick-to_right notification_theme_alfa-on-white']"));
     }};
 
     public void fillInTheFields(DataGenerator.UserInfo user) {
@@ -34,6 +33,13 @@ public class BuyPage {
         elementPage.get("ownerField").setValue(user.getOwner());
         elementPage.get("cvcField").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         elementPage.get("cvcField").setValue(user.getCvc());
+    }
+
+    public void resumeButtonClick() {
         elementPage.get("resumeButton").click();
+    }
+
+    public SelenideElement getElementPage(String text) {
+        return elementPage.get(text);
     }
 }

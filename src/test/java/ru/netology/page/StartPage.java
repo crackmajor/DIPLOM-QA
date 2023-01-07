@@ -20,7 +20,7 @@ public class StartPage {
     }
 
     public BuyOnCreditPage pressTheButtonBuyOnCredit() {
-        elementPage.get("buyButton").click();
+        elementPage.get("buyOnCreditButton").click();
         return new BuyOnCreditPage();
     }
 }
