@@ -17,7 +17,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class BuyTest {
     @BeforeEach
     void setup() {
-        browser = "chrome";
+        browser = "firefox";
         open("http://localhost:8080");
         timeout = 10000;
     }
