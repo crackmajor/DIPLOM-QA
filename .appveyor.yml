@@ -16,9 +16,13 @@ install:
   - ps: sudo chmod +x /usr/local/bin/docker-compose
   - ps: sudo docker-compose up -d --build
   - sleep 10
-  - java -jar ./artifacts/aqa-shop.jar &
+  - java -Dspring.datasource.url=jdbc:mysql://localhost:3306/app -jar ./artifacts/aqa-shop.jar &
+
+test_script:
   - sudo chmod +x gradlew
+  - ps: ./gradlew test --info “-Dselenide.headless=true”
 
 build_script:
   - sleep 10
-  - ./gradlew test -Dselenide.headless=true --info
+  - sudo chmod +x ./gradlew
+  - ./gradlew test -Dselenide.headless=true -Durlbd=jdbc:mysql://localhost:3306/app
