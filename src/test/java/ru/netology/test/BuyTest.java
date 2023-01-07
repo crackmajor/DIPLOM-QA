@@ -18,6 +18,7 @@ public class BuyTest {
     @BeforeEach
     void setup() {
         browser = "chrome";
+        System.setProperty("chromeoptions.args", "--no-sandbox");
         open("http://127.0.0.1:8080");
         timeout = 10000;
     }
