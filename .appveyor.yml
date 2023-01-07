@@ -25,4 +25,4 @@ test_script:
 build_script:
   - sleep 10
   - sudo chmod +x ./gradlew
-  - ./gradlew test -Dselenide.headless=true
+  - ./gradlew test -Dselenide.headless=true --info
