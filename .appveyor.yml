@@ -12,18 +12,16 @@ services:
   - docker
 
 install:
-#  - ps: sudo curl -L "https://github.com/docker/compose/releases/download/2.15.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  - npm install
   - ps: sudo chmod +x /usr/local/bin/docker-compose
   - ps: sudo docker-compose up -d --build
-  - sleep 10
+  - sleep 15
   - java -jar ./artifacts/aqa-shop.jar &
 
 test_script:
-  - sleep 10
   - sudo chmod +x gradlew
-  - ps: ./gradlew test --info “-Dselenide.headless=true”
+  - ps: ./gradlew test --info -Dselenide.headless=true
 
 build_script:
-  - sleep 10
   - sudo chmod +x ./gradlew
   - ./gradlew test -Dselenide.headless=true --info
