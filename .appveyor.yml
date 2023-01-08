@@ -12,7 +12,6 @@ services:
   - docker
 
 install:
-  - npm install
   - ps: sudo chmod +x /usr/local/bin/docker-compose
   - ps: sudo docker-compose up -d --build
   - sleep 15
@@ -20,8 +19,8 @@ install:
 
 test_script:
   - sudo chmod +x gradlew
-  - ps: ./gradlew test --info -Dselenide.headless=true
+  - ps: ./gradlew test --info
 
 build_script:
   - sudo chmod +x ./gradlew
-  - ./gradlew test -Dselenide.headless=true --info
+  - ./gradlew test --info
