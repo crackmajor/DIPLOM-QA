@@ -1,11 +1,10 @@
 package ru.netology.test;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import lombok.val;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
 import ru.netology.data.DataGenerator;
 import ru.netology.page.StartPage;
@@ -15,12 +14,23 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class BuyTest {
+
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
     @BeforeEach
     void setup() {
-        Configuration.headless = true;
+//        Configuration.headless = true;
 //        browser = "firefox";
         open("http://localhost:8080");
         timeout = 10000;
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
     }
 
     @Test
