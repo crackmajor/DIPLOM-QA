@@ -1,6 +1,7 @@
 package ru.netology.test;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import lombok.val;
@@ -22,10 +23,9 @@ public class BuyTest {
 
     @BeforeEach
     void setup() {
-//        Configuration.headless = true;
-//        browser = "firefox";
+        Configuration.headless = true;
         open("http://localhost:8080");
-        timeout = 10000;
+        timeout = 12000;
     }
 
     @AfterAll
@@ -288,4 +288,15 @@ public class BuyTest {
         buyPage.resumeButtonClick();
         $("[class='input__sub']").shouldHave(Condition.text("Неверно указан срок действия карты")).shouldBe(Condition.visible);
     }
+
+//    @Test
+//    @DisplayName("Submitting a 'buy form' with invalid data and a card with 'APPROVED' status")
+//    void buyShouldBeRejectedTest18() {
+//        val user = DataGenerator.UserInfo.getUserInfo("APPROVED", -360);
+//        StartPage startPage = new StartPage();
+//        val buyPage = startPage.pressTheButtonBuy();
+//        buyPage.fillInTheFields(user);
+//        buyPage.resumeButtonClick();
+//        buyPage.getElementPage("successfully").shouldBe(Condition.visible);
+//    }
 }

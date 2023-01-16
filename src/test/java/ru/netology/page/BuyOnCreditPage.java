@@ -19,7 +19,7 @@ public class BuyOnCreditPage {
         put("cvcField", $("[placeholder='999']"));
         put("resumeButton", $(byText("Продолжить")));
         put("successfully", $("[class='notification notification_visible notification_status_ok notification_has-closer notification_stick-to_right notification_theme_alfa-on-white']"));
-        put("error", $("[class='notification notification_status_error notification_has-closer notification_stick-to_right notification_theme_alfa-on-white']"));
+        put("error", $("[class='notification notification_visible notification_status_error notification_has-closer notification_stick-to_right notification_theme_alfa-on-white']"));
     }};
 
     public void fillInTheFields(DataGenerator.UserInfo user) {

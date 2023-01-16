@@ -3,11 +3,10 @@ plugins {
     id 'io.qameta.allure' version '2.11.2'
 }
 
-group 'org.example'
+group 'ru.netology'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.8
-
+sourceCompatibility = 11
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
 

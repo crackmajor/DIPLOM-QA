@@ -25,24 +25,22 @@ public class DataGenerator {
     }
 
     public static String generateOwner() {
-        Faker faker = new Faker(new Locale("ru"));
-        String owner = faker.name().lastName() + " " + faker.name().firstName();
-        return owner;
+        Faker faker = new Faker(new Locale("en"));
+        return faker.name().lastName() + " " + faker.name().firstName();
     }
 
     public static String generateRandomCard() {
-        Faker faker = new Faker(new Locale("ru"));
-        String owner = String.valueOf(faker.business().creditCardNumber());
-        return owner;
+        Faker faker = new Faker(new Locale("en"));
+        return String.valueOf(faker.business().creditCardNumber());
     }
 
     @Value
     public static class UserInfo {
-        private String cardNumber;
-        private String month;
-        private String year;
-        private String owner;
-        private String cvc;
+        String cardNumber;
+        String month;
+        String year;
+        String owner;
+        String cvc;
 
         public static UserInfo getUserInfo(String status, int shift) {
             String date = generateDate(shift);
@@ -52,15 +50,6 @@ public class DataGenerator {
                     generateOwner(),
                     "666");
         }
-    }
-
-    public static UserInfo getInvalidUserInfo(String status) {
-        String date = generateDate(360);
-        return new UserInfo(getCardNumbers(status),
-                date.substring(0, 2),
-                date.substring(5, 7),
-                generateOwner(),
-                "666");
     }
 }
 
