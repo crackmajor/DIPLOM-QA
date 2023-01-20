@@ -36,10 +36,10 @@ public class DataGenerator {
 
     @Value
     public static class UserInfo {
-        String cardNumber;
+        String number;
         String month;
         String year;
-        String owner;
+        String holder;
         String cvc;
 
         public static UserInfo getUserInfo(String status, int shift) {

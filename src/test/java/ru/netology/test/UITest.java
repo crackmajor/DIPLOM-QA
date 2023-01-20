@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Configuration.timeout;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class BuyTest {
+public class UITest {
 
     @BeforeAll
     static void setUpAll() {

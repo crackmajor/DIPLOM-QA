@@ -1,23 +1,21 @@
-# Отчётные документы по итогам тестирования
-    
+# Итоги тестирования
 
-    краткое описание;
-    количество тест-кейсов;
-    процент успешных и не успешных тест-кейсов;
-    общие рекомендации.
+* Произведено исследовательское тестирование сервиса
+* Написание автоматических тестов для сервиса завершено
 
+  * Общее количество тестов - 26;
+  * Успешно пройдены - 20 (76.92%);
+  * Не пройдены - 6 (23.07%);
 
-<details>
-<summary> Allure Report</summary>
-![img_1.png](./Doc/Pictures/allure.png)
-</details>
+### Allure Report
+![img.png](img.png)
 
-<details>
-<summary> Gradle Report</summary>
-![img.png](./Doc/Pictures/gradle.png)
-</details>
+### Gradle Report
+![img_1.png](img_1.png)
 
-<details>
-<summary> AppVeyor CI</summary>
-![img.png](https://ci.appveyor.com/project/crackmajor/diplom-qa?fullLog=true)
-</details>
+### AppVeyor CI
+[Отображение](https://ci.appveyor.com/project/crackmajor/diplom-qa?fullLog=true) полного журнала.
+
+### Рекомендации
+
+Полное описание рекомендаций можно найти [тут](https://github.com/crackmajor/DIPLOM-QA/issues)

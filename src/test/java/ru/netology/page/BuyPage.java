@@ -24,13 +24,13 @@ public class BuyPage {
 
     public void fillInTheFields(DataGenerator.UserInfo user) {
         elementPage.get("cardNumberField").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
-        elementPage.get("cardNumberField").setValue(user.getCardNumber());
+        elementPage.get("cardNumberField").setValue(user.getNumber());
         elementPage.get("monthField").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         elementPage.get("monthField").setValue(user.getMonth());
         elementPage.get("yearField").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         elementPage.get("yearField").setValue(user.getYear());
         elementPage.get("ownerField").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
-        elementPage.get("ownerField").setValue(user.getOwner());
+        elementPage.get("ownerField").setValue(user.getHolder());
         elementPage.get("cvcField").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         elementPage.get("cvcField").setValue(user.getCvc());
     }

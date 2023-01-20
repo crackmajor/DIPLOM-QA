@@ -22,11 +22,14 @@ repositories {
 }
 
 dependencies {
+    testImplementation 'io.rest-assured:rest-assured:4.3.0'
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     testImplementation 'com.codeborne:selenide:6.11.0'
+    testImplementation 'commons-dbutils:commons-dbutils:1.7'
+    testImplementation 'mysql:mysql-connector-java:8.0.18'
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
     testImplementation 'io.qameta.allure:allure-selenide:2.16.1'
     testCompileOnly 'org.projectlombok:lombok:1.18.24'
