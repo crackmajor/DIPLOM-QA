@@ -14,14 +14,13 @@ public class SQLHelper {
     public static final String deletePayment = "DELETE FROM app.payment_entity";
     public static final String deleteOrder = "DELETE FROM app.order_entity";
     public static final String deleteCredit = "DELETE FROM app.credit_request_entity";
-
+    public static final String url = System.getProperty("db.url");
+    public static final String username = System.getProperty("username");
+    public static final String pass = System.getProperty("password");
 
     @SneakyThrows
     public static Connection getConnection() {
-        var conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/app", "app", "pass"
-        );
-        return conn;
+        return DriverManager.getConnection(url, username, pass);
     }
 
     @SneakyThrows
@@ -38,9 +37,7 @@ public class SQLHelper {
     public static SQLEntity getPaymentData() {
         var runner = new QueryRunner();
         try (Connection conn = getConnection()) {
-            var count = runner.query(conn, paymentData, new BeanHandler<>(SQLEntity.class));
-            System.out.println(count);
-            return count;
+            return runner.query(conn, paymentData, new BeanHandler<>(SQLEntity.class));
         }
     }
 
@@ -48,9 +45,7 @@ public class SQLHelper {
     public static SQLEntity getCreditData() {
         var runner = new QueryRunner();
         try (Connection conn = getConnection()) {
-            var count = runner.query(conn, creditData, new BeanHandler<>(SQLEntity.class));
-            System.out.println(count);
-            return count;
+            return runner.query(conn, creditData, new BeanHandler<>(SQLEntity.class));
         }
     }
 }

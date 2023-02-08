@@ -11,7 +11,7 @@
 Перечень используемых инструментов:
 
     1. IntelliJ IDEA (Community Edition) - это IDE, интегрированная среда разработки.
-    2. Amazon Corretto 11 - бесплатная многоплатформенная версия пакета средств разработки Open Java (OpenJDK), готовая к использованию в рабочей среде.
+    2. Amazon Corretto 11 - бесплатная многоплатформенная версия пакета средств разработки Open Java(OpenJDK), готовая к использованию в рабочей среде.
     3. JUnit - фреймворк для модульного тестирования программного обеспечения на языке Java.
     4. Lombok - библиотека для сокращения кода в классах и расширения функциональности языка Java.
     5. Selenide - инструмент для написания автоматических тестов.
@@ -23,11 +23,10 @@
 
     1. Клонирование репозитория
     2. Запуск контейнеров командой 'docker-compose up -d'
-    3. Запуск aqa-shop.jar c MySQL командой в консоле 'java -jar ./artifacts/aqa-shop.jar -Dspring.datasource.url=jdbc:mysql://localhost:3306/app'
-    4. Либо запуск aqa-shop.jar c PostgerSQL командой в консоле 'java -jar ./artifacts/aqa-shop.jar -Dspring.datasource.url=jdbc:postgresql://localhost:5432/app'
-    5. Запустить автотесты командой в консоле './gradlew test clean'
+    3. Запуск aqa-shop.jar c MySQL командой в консоле 'java "-Dspring.datasource.url=jdbc:mysql://localhost:3306/app" -jar artifacts/aqa-shop.jar'
+    4. Запуск aqa-shop.jar c PostgerSQL командой в консоле 'java "-Dspring.datasource.url=jdbc:postgresql://localhost:5432/app" -jar artifacts/aqa-shop.jar'
+    5. Запустить автотесты командой в консоле './gradlew "-Ddb.url=jdbc:mysql://localhost:3306/app" clean test' для MySQL, либо командой в консоле './gradlew "-Ddb.url=jdbc:postgresql://localhost:5432/app" clean test' для PostgerSQL
     6. Для генерации отчета Allure запустить команду в консоле './gradlew allureServe'
-
 [Отчётные документы по итогам тестирования](Doc/Report.md)
 
 [Отчётные документы по итогам автоматизации](Doc/Summary.md)

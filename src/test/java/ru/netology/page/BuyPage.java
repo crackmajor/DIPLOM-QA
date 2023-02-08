@@ -1,45 +1,114 @@
 package ru.netology.page;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
 import ru.netology.data.DataGenerator;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 
 public class BuyPage {
-    private static Map<String, SelenideElement> elementPage = new HashMap<String, SelenideElement>() {{
-        put("cardNumberField", $("[placeholder='0000 0000 0000 0000']"));
-        put("monthField", $("input[placeholder='08']"));
-        put("yearField", $("input[placeholder='22']"));
-        put("ownerField", $("div.form-field:nth-child(3) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1) > span:nth-child(1) > span:nth-child(2) > input:nth-child(1)"));
-        put("cvcField", $("[placeholder='999']"));
-        put("resumeButton", $(byText("Продолжить")));
-        put("successfully", $("[class='notification notification_visible notification_status_ok notification_has-closer notification_stick-to_right notification_theme_alfa-on-white']"));
-        put("error", $("[class='notification notification_visible notification_status_error notification_has-closer notification_stick-to_right notification_theme_alfa-on-white']"));
-    }};
+    SelenideElement cardNumberField = $("[placeholder='0000 0000 0000 0000']");
+    SelenideElement monthField = $("input[placeholder='08']");
+    SelenideElement yearField = $("input[placeholder='22']");
+    SelenideElement ownerField = $$("[class='input__control']").get(3);
+    SelenideElement cvcField = $("[placeholder='999']");
+    SelenideElement resumeButton = $(byText("Продолжить"));
+    SelenideElement successfully = $(byText("Операция одобрена Банком."));
+    SelenideElement error = $(byText("Ошибка! Банк отказал в проведении операции."));
 
     public void fillInTheFields(DataGenerator.UserInfo user) {
-        elementPage.get("cardNumberField").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
-        elementPage.get("cardNumberField").setValue(user.getNumber());
-        elementPage.get("monthField").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
-        elementPage.get("monthField").setValue(user.getMonth());
-        elementPage.get("yearField").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
-        elementPage.get("yearField").setValue(user.getYear());
-        elementPage.get("ownerField").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
-        elementPage.get("ownerField").setValue(user.getHolder());
-        elementPage.get("cvcField").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
-        elementPage.get("cvcField").setValue(user.getCvc());
+        clearCardNumberField();
+        cardNumberField.setValue(user.getNumber());
+        clearMonthField();
+        monthField.setValue(user.getMonth());
+        clearYearField();
+        yearField.setValue(user.getYear());
+        clearOwnerField();
+        ownerField.setValue(user.getHolder());
+        clearCVCField();
+        cvcField.setValue(user.getCvc());
+    }
+
+    public void fillInTheField(SelenideElement field, String text) {
+        field.sendKeys(text);
+    }
+
+    public void fillInTheCardNumberField(String text) {
+        fillInTheField(cardNumberField, text);
+    }
+
+    public void fillInTheMonthField(String text) {
+        fillInTheField(monthField, text);
+    }
+
+    public void fillInTheYearField(String text) {
+        fillInTheField(yearField, text);
+    }
+
+    public void fillInTheOwnerField(String text) {
+        fillInTheField(ownerField, text);
+    }
+
+    public void fillInTheCVCField(String text) {
+        fillInTheField(cvcField, text);
+    }
+
+    public void fieldCleaner(SelenideElement field) {
+        field.sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
+    }
+
+    public void clearCardNumberField() {
+        fieldCleaner(cardNumberField);
+    }
+
+    public void clearMonthField() {
+        fieldCleaner(monthField);
+    }
+
+    public void clearYearField() {
+        fieldCleaner(yearField);
+    }
+
+    public void clearOwnerField() {
+        fieldCleaner(ownerField);
+    }
+
+    public void clearCVCField() {
+        fieldCleaner(cvcField);
     }
 
     public void resumeButtonClick() {
-        elementPage.get("resumeButton").click();
+        resumeButton.click();
     }
 
-    public SelenideElement getElementPage(String text) {
-        return elementPage.get(text);
+    public void popUpSuccessfullyShouldBeVisible() {
+        successfully.shouldBe(Condition.visible);
+    }
+
+    public void popUpErrorShouldBeVisible() {
+        error.shouldBe(Condition.visible);
+    }
+
+    public void hintShouldBeVisible() {
+        $("[class='input__sub']").shouldHave(Condition.text("Неверный формат")).shouldBe(Condition.visible);
+    }
+
+    public void hintShouldBeHidden() {
+        $("[class='input__sub']").shouldHave(Condition.text("Неверный формат")).shouldBe(Condition.hidden);
+    }
+
+    public void hintCardExpiredShouldBeVisible() {
+        $("[class='input__sub']").shouldHave(Condition.text("Истёк срок действия карты")).shouldBe(Condition.visible);
+    }
+
+    public void hintInvalidExpirationDateShouldBeVisible() {
+        $("[class='input__sub']").shouldHave(Condition.text("Неверно указан срок действия карты")).shouldBe(Condition.visible);
+    }
+
+    public void hintRequiredFieldShouldBeVisible() {
+        $("[class='input__sub']").shouldHave(Condition.text("Поле обязательно для заполнения")).shouldBe(Condition.visible);
     }
 }
