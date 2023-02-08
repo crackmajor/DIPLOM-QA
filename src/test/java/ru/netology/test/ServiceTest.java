@@ -24,7 +24,7 @@ public class ServiceTest {
     @BeforeEach
     void setup() {
         SQLHelper.dropData();
-//        Configuration.headless = true;
+        Configuration.headless = true;
         open("http://localhost:8080");
         timeout = 12000;
     }
