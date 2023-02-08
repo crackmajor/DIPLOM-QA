@@ -5,6 +5,11 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
 import ru.netology.data.DataGenerator;
 
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
@@ -18,6 +23,12 @@ public class BuyPage {
     SelenideElement resumeButton = $(byText("Продолжить"));
     SelenideElement successfully = $(byText("Операция одобрена Банком."));
     SelenideElement error = $(byText("Ошибка! Банк отказал в проведении операции."));
+    private static final Map<String, SelenideElement> hintsInfo = new HashMap<String, SelenideElement>() {{
+        put("Неверный формат", $(byText("Неверный формат")));
+        put("Истёк срок действия карты", $(byText("Истёк срок действия карты")));
+        put("Неверно указан срок действия карты", $(byText("Неверно указан срок действия карты")));
+        put("Поле обязательно для заполнения", $(byText("Поле обязательно для заполнения")));
+    }};
 
     public void fillInTheFields(DataGenerator.UserInfo user) {
         clearCardNumberField();
@@ -85,30 +96,20 @@ public class BuyPage {
     }
 
     public void popUpSuccessfullyShouldBeVisible() {
-        successfully.shouldBe(Condition.visible);
+        successfully.shouldBe(Condition.visible, Duration.ofSeconds(10));
     }
 
     public void popUpErrorShouldBeVisible() {
-        error.shouldBe(Condition.visible);
+        error.shouldBe(Condition.visible, Duration.ofSeconds(10));
     }
 
-    public void hintShouldBeVisible() {
-        $("[class='input__sub']").shouldHave(Condition.text("Неверный формат")).shouldBe(Condition.visible);
-    }
-
-    public void hintShouldBeHidden() {
-        $("[class='input__sub']").shouldHave(Condition.text("Неверный формат")).shouldBe(Condition.hidden);
-    }
-
-    public void hintCardExpiredShouldBeVisible() {
-        $("[class='input__sub']").shouldHave(Condition.text("Истёк срок действия карты")).shouldBe(Condition.visible);
-    }
-
-    public void hintInvalidExpirationDateShouldBeVisible() {
-        $("[class='input__sub']").shouldHave(Condition.text("Неверно указан срок действия карты")).shouldBe(Condition.visible);
-    }
-
-    public void hintRequiredFieldShouldBeVisible() {
-        $("[class='input__sub']").shouldHave(Condition.text("Поле обязательно для заполнения")).shouldBe(Condition.visible);
+    public void hintVisible(String hintName) {
+        for (Map.Entry<String, SelenideElement> set : hintsInfo.entrySet()) {
+            if (!Objects.equals(set.getKey(), hintName)) {
+                set.getValue().shouldBe(Condition.hidden, Duration.ofSeconds(1));
+            } else {
+                set.getValue().shouldBe(Condition.visible, Duration.ofSeconds(1));
+            }
+        }
     }
 }

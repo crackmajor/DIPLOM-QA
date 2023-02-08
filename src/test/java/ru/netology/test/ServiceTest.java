@@ -9,7 +9,6 @@ import ru.netology.data.DataGenerator;
 import ru.netology.data.SQLHelper;
 import ru.netology.page.StartPage;
 
-import static com.codeborne.selenide.Configuration.timeout;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -27,7 +26,6 @@ public class ServiceTest {
         SQLHelper.dropData();
         Configuration.headless = true;
         open("http://localhost:8080");
-        timeout = 12000;
     }
 
     @AfterAll
@@ -131,7 +129,7 @@ public class ServiceTest {
         StartPage startPage = new StartPage();
         val buyPage = startPage.pressTheButtonBuy();
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
 //    @Test
@@ -153,7 +151,7 @@ public class ServiceTest {
         StartPage startPage = new StartPage();
         val buyPage = startPage.pressTheButtonBuyOnCredit();
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
 //    @Test
@@ -202,7 +200,7 @@ public class ServiceTest {
         buyPage.fillInTheFields(user);
         buyPage.clearCardNumberField();
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -215,7 +213,7 @@ public class ServiceTest {
         buyPage.fillInTheFields(user);
         buyPage.clearMonthField();
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -228,7 +226,7 @@ public class ServiceTest {
         buyPage.fillInTheFields(user);
         buyPage.clearYearField();
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -241,7 +239,7 @@ public class ServiceTest {
         buyPage.fillInTheFields(user);
         buyPage.clearOwnerField();
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -254,7 +252,7 @@ public class ServiceTest {
         buyPage.fillInTheFields(user);
         buyPage.clearCVCField();
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -267,7 +265,7 @@ public class ServiceTest {
         buyPage.fillInTheFields(user);
         buyPage.clearCardNumberField();
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -280,7 +278,7 @@ public class ServiceTest {
         buyPage.fillInTheFields(user);
         buyPage.clearMonthField();
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -293,7 +291,7 @@ public class ServiceTest {
         buyPage.fillInTheFields(user);
         buyPage.clearYearField();
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -306,7 +304,7 @@ public class ServiceTest {
         buyPage.fillInTheFields(user);
         buyPage.clearOwnerField();
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -319,7 +317,7 @@ public class ServiceTest {
         buyPage.fillInTheFields(user);
         buyPage.clearCVCField();
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -331,7 +329,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuy();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -343,7 +341,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuy();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -355,7 +353,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuy();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -379,7 +377,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuyOnCredit();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -391,7 +389,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuyOnCredit();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -403,7 +401,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuyOnCredit();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -429,7 +427,7 @@ public class ServiceTest {
         buyPage.clearYearField();
         buyPage.fillInTheYearField("2");
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -441,7 +439,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuy();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintCardExpiredShouldBeVisible();
+        buyPage.hintVisible("Истёк срок действия карты");
     }
 
     @Test
@@ -453,7 +451,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuy();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintInvalidExpirationDateShouldBeVisible();
+        buyPage.hintVisible("Неверно указан срок действия карты");
     }
 
     @Test
@@ -481,7 +479,7 @@ public class ServiceTest {
         buyPage.clearYearField();
         buyPage.fillInTheYearField(DataGenerator.getTestInfo("SPECIAL"));
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -495,7 +493,7 @@ public class ServiceTest {
         buyPage.clearYearField();
         buyPage.fillInTheYearField(DataGenerator.getTestInfo("LATIN"));
         buyPage.resumeButtonClick();
-        buyPage.hintRequiredFieldShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -509,7 +507,7 @@ public class ServiceTest {
         buyPage.clearYearField();
         buyPage.fillInTheYearField(DataGenerator.getTestInfo("KIRI"));
         buyPage.resumeButtonClick();
-        buyPage.hintRequiredFieldShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -523,7 +521,7 @@ public class ServiceTest {
         buyPage.clearYearField();
         buyPage.fillInTheYearField("2");
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -535,7 +533,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuyOnCredit();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintCardExpiredShouldBeVisible();
+        buyPage.hintVisible("Истёк срок действия карты");
     }
 
     @Test
@@ -547,7 +545,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuyOnCredit();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintInvalidExpirationDateShouldBeVisible();
+        buyPage.hintVisible("Неверно указан срок действия карты");
     }
 
     @Test
@@ -574,7 +572,7 @@ public class ServiceTest {
         buyPage.clearYearField();
         buyPage.fillInTheYearField(DataGenerator.getTestInfo("SPECIAL"));
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -588,7 +586,7 @@ public class ServiceTest {
         buyPage.clearYearField();
         buyPage.fillInTheYearField(DataGenerator.getTestInfo("LATIN"));
         buyPage.resumeButtonClick();
-        buyPage.hintRequiredFieldShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -602,7 +600,7 @@ public class ServiceTest {
         buyPage.clearYearField();
         buyPage.fillInTheYearField(DataGenerator.getTestInfo("KIRI"));
         buyPage.resumeButtonClick();
-        buyPage.hintRequiredFieldShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -616,7 +614,7 @@ public class ServiceTest {
         buyPage.clearMonthField();
         buyPage.fillInTheMonthField("2");
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -643,7 +641,7 @@ public class ServiceTest {
         buyPage.clearMonthField();
         buyPage.fillInTheMonthField("00");
         buyPage.resumeButtonClick();
-        buyPage.hintInvalidExpirationDateShouldBeVisible();
+        buyPage.hintVisible("Неверно указан срок действия карты");
     }
 
     @Test
@@ -657,7 +655,7 @@ public class ServiceTest {
         buyPage.clearMonthField();
         buyPage.fillInTheMonthField("13");
         buyPage.resumeButtonClick();
-        buyPage.hintInvalidExpirationDateShouldBeVisible();
+        buyPage.hintVisible("Неверно указан срок действия карты");
     }
 
     @Test
@@ -671,7 +669,7 @@ public class ServiceTest {
         buyPage.clearMonthField();
         buyPage.fillInTheMonthField(DataGenerator.getTestInfo("SPECIAL"));
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -685,7 +683,7 @@ public class ServiceTest {
         buyPage.clearMonthField();
         buyPage.fillInTheMonthField(DataGenerator.getTestInfo("LATIN"));
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -699,7 +697,7 @@ public class ServiceTest {
         buyPage.clearMonthField();
         buyPage.fillInTheMonthField(DataGenerator.getTestInfo("KIRI"));
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -713,7 +711,7 @@ public class ServiceTest {
         buyPage.clearMonthField();
         buyPage.fillInTheMonthField("2");
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -740,7 +738,7 @@ public class ServiceTest {
         buyPage.clearMonthField();
         buyPage.fillInTheMonthField("00");
         buyPage.resumeButtonClick();
-        buyPage.hintInvalidExpirationDateShouldBeVisible();
+        buyPage.hintVisible("Неверно указан срок действия карты");
     }
 
     @Test
@@ -754,7 +752,7 @@ public class ServiceTest {
         buyPage.clearMonthField();
         buyPage.fillInTheMonthField("13");
         buyPage.resumeButtonClick();
-        buyPage.hintInvalidExpirationDateShouldBeVisible();
+        buyPage.hintVisible("Неверно указан срок действия карты");
     }
 
     @Test
@@ -768,7 +766,7 @@ public class ServiceTest {
         buyPage.clearMonthField();
         buyPage.fillInTheMonthField(DataGenerator.getTestInfo("SPECIAL"));
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -782,7 +780,7 @@ public class ServiceTest {
         buyPage.clearMonthField();
         buyPage.fillInTheMonthField(DataGenerator.getTestInfo("LATIN"));
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -796,7 +794,7 @@ public class ServiceTest {
         buyPage.clearMonthField();
         buyPage.fillInTheMonthField(DataGenerator.getTestInfo("KIRI"));
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -808,7 +806,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuy();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -820,7 +818,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuy();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -832,7 +830,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuy();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -844,7 +842,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuy();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -856,7 +854,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuy();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -868,7 +866,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuy();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -880,7 +878,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuy();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -892,7 +890,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuy();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -904,7 +902,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuyOnCredit();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -916,7 +914,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuyOnCredit();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -928,7 +926,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuyOnCredit();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -940,7 +938,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuyOnCredit();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -952,7 +950,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuyOnCredit();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -964,7 +962,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuyOnCredit();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -976,7 +974,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuyOnCredit();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -988,7 +986,7 @@ public class ServiceTest {
         val buyPage = startPage.pressTheButtonBuyOnCredit();
         buyPage.fillInTheFields(user);
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -1002,7 +1000,7 @@ public class ServiceTest {
         buyPage.clearCVCField();
         buyPage.fillInTheCVCField("6");
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -1029,7 +1027,7 @@ public class ServiceTest {
         buyPage.clearCVCField();
         buyPage.fillInTheCVCField("\uFEF1" + "\u00B6" + "\u0556" + "\u00B6" + "\u00B6" + "\u0604");
         buyPage.resumeButtonClick();
-        buyPage.hintRequiredFieldShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -1043,7 +1041,7 @@ public class ServiceTest {
         buyPage.clearCVCField();
         buyPage.fillInTheCVCField("re");
         buyPage.resumeButtonClick();
-        buyPage.hintRequiredFieldShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -1057,7 +1055,7 @@ public class ServiceTest {
         buyPage.clearCVCField();
         buyPage.fillInTheCVCField("ку");
         buyPage.resumeButtonClick();
-        buyPage.hintRequiredFieldShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -1071,7 +1069,7 @@ public class ServiceTest {
         buyPage.clearCVCField();
         buyPage.fillInTheCVCField("2");
         buyPage.resumeButtonClick();
-        buyPage.hintShouldBeVisible();
+        buyPage.hintVisible("Неверный формат");
     }
 
     @Test
@@ -1098,7 +1096,7 @@ public class ServiceTest {
         buyPage.clearCVCField();
         buyPage.fillInTheCVCField("\uFEF1" + "\u00B6" + "\u0556" + "\u00B6" + "\u00B6" + "\u0604");
         buyPage.resumeButtonClick();
-        buyPage.hintRequiredFieldShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -1112,7 +1110,7 @@ public class ServiceTest {
         buyPage.clearCVCField();
         buyPage.fillInTheCVCField("re");
         buyPage.resumeButtonClick();
-        buyPage.hintRequiredFieldShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
     @Test
@@ -1126,6 +1124,6 @@ public class ServiceTest {
         buyPage.clearCVCField();
         buyPage.fillInTheCVCField("ку");
         buyPage.resumeButtonClick();
-        buyPage.hintRequiredFieldShouldBeVisible();
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 }
