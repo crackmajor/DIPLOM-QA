@@ -96,11 +96,11 @@ public class BuyOnCreditPage {
     }
 
     public void popUpSuccessfullyShouldBeVisible() {
-        successfully.shouldBe(Condition.visible, Duration.ofSeconds(10));
+        successfully.shouldBe(Condition.visible, Duration.ofSeconds(11));
     }
 
     public void popUpErrorShouldBeVisible() {
-        error.shouldBe(Condition.visible, Duration.ofSeconds(10));
+        error.shouldBe(Condition.visible, Duration.ofSeconds(11));
     }
 
     public void hintVisible(String hintName) {

@@ -129,7 +129,7 @@ public class ServiceTest {
         StartPage startPage = new StartPage();
         val buyPage = startPage.pressTheButtonBuy();
         buyPage.resumeButtonClick();
-        buyPage.hintVisible("Неверный формат");
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
 //    @Test
@@ -151,7 +151,7 @@ public class ServiceTest {
         StartPage startPage = new StartPage();
         val buyPage = startPage.pressTheButtonBuyOnCredit();
         buyPage.resumeButtonClick();
-        buyPage.hintVisible("Неверный формат");
+        buyPage.hintVisible("Поле обязательно для заполнения");
     }
 
 //    @Test
