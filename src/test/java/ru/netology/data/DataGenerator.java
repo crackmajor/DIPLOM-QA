@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class DataGenerator {
-    private static final Map<String, String> testInfo = new HashMap<String, String>() {{
+    private static final Map<String, String> testInfo = new HashMap<>() {{
         put("APPROVED", "4444 4444 4444 4441");
         put("DECLINED", "4444 4444 4444 4442");
         put("RANDOM", generateRandomCard());
@@ -24,14 +24,12 @@ public class DataGenerator {
         put("pay", "/api/v1/pay");
         put("credit", "/api/v1/credit");
         put("VALID_SPEC", "Mamed Magomed-Ogly");
-        put("NAME", "");
         put("INVALID", "-Mamed Magomed-Ogly-");
         put("INVALID_1", "i");
         put("INVALID_2", "Иван Иванов");
         put("INVALID_3", "Pavlov Pеtr");
         put("INVALID_4", "12345 Petr");
-        put("INVALID_5", "INVALID_5");
-        put("INVALID_LONG", ";¶æþßڐٍ₷ℓΌῪ↔›ﭞﭘﭾנּﻑﻱæ Petr");
+        put("INVALID_5", ";¶æþßڐٍ₷ℓΌῪ↔›ﭞﭘﭾנּﻑﻱæ Petr");
         put("INVALID_130", RandomStringUtils.randomAlphabetic(130));
     }};
 

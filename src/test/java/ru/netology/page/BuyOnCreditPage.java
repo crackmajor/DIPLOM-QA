@@ -23,7 +23,7 @@ public class BuyOnCreditPage {
     SelenideElement resumeButton = $(byText("Продолжить"));
     SelenideElement successfully = $(byText("Операция одобрена Банком."));
     SelenideElement error = $(byText("Ошибка! Банк отказал в проведении операции."));
-    private static final Map<String, SelenideElement> hintsInfo = new HashMap<String, SelenideElement>() {{
+    private static final Map<String, SelenideElement> hintsInfo = new HashMap<>() {{
         put("Неверный формат", $(byText("Неверный формат")));
         put("Истёк срок действия карты", $(byText("Истёк срок действия карты")));
         put("Неверно указан срок действия карты", $(byText("Неверно указан срок действия карты")));
