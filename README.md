@@ -1,6 +1,6 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/m8ii62ecqxrw0b91?svg=true)](https://ci.appveyor.com/project/crackmajor/diplom-qa)
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Sigmar+One&duration=3000&pause=5000&color=1C9ACA&background=A79EA700&center=true&vCenter=true&width=500&lines=%F0%9F%9A%80%EF%B8%8FDiploma+project+under+development+%F0%9F%9A%80%EF%B8%8F)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Sigmar+One&duration=3000&pause=5000&color=1C9ACA&background=A79EA700&center=true&vCenter=true&width=600&lines=%F0%9F%9A%80+Diploma+Project+Successfully+Completed!!!+%F0%9F%9A%80)](https://git.io/typing-svg)
 
 # Дипломный проект по профессии «Тестировщик»
 
